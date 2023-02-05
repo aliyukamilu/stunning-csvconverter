@@ -5,11 +5,13 @@ const cors = require("cors")
 const xml2js = require("xml2js")
 const bodyParser = require("body-parser")
 const json2csv = require("json2csv")
-
+const xmlparser = require('express-xml-bodyparser');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use(bodyParser.text({ type: 'text/xml' }));
 
 app.use(cors());
 
@@ -21,18 +23,19 @@ app.post("/convert-to-xml", (req, res) => {
 
   res.send(xml);
 });
-
 // POST route to convert XML to JSON
+
 app.post("/convert-to-json", (req, res) => {
   // Convert XML to JSON
-  const parser = new xml2js.Parser();
-  parser.parseString(req.body, (err, result) => {
-    if (err) {
-      res.status(400).send(err);
-    } else {
-      res.send(result);
-    }
+  let xml = req.body
+  const parseString = xml2js.parseString;
+
+  parseString(xml, (err, result) => {
+    if (err) console.error(err);
+
+    res.json(result)
   });
+
 });
 
 app.post('/convert-to-edifact', (req, res) => {

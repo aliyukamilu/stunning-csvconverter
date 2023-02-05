@@ -17,12 +17,14 @@
     "edifact": "^1.2.12",
     "edifact-parser": "^0.0.4",
     "express": "^4.18.1",
+    "express-xml-bodyparser": "^0.3.0",
     "https": "^1.0.0",
     "https-agent": "^1.0.0",
     "json2csv": "^5.0.7",
     "mongodb": "^4.11.0",
     "node-fetch": "^3.2.9",
     "nodemon": "^2.0.19",
+    "xml-js": "^1.6.11",
     "xml2js": "^0.4.23"
   }
 }

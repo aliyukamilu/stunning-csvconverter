@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "ancorp_pinigingserver",
+  "name": "converter",
   "builds": [
     {
       "src": "server/index.js",
