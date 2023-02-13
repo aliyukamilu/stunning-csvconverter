@@ -19,6 +19,10 @@ function replaceDoubleQuotesWithSingleQuotes(str) {
   return str.replace(/\"/g, "\'");
 }
 
+function replaceWord(str, target, replacement) {
+  return str.replace(new RegExp(target, 'g'), replacement);
+}
+
 // POST route to convert JSON to XML
 app.post("/convert-to-xml", (req, res) => {
   // Convert JSON to XML
@@ -26,10 +30,14 @@ app.post("/convert-to-xml", (req, res) => {
   const xml = builder.buildObject(req.body);
 
 
-  res.json({
-    status: 1,
-    result: replaceDoubleQuotesWithSingleQuotes(xml)
-  });
+  // res.json({
+  //   status: 1,
+  //   result: replaceDoubleQuotesWithSingleQuotes(xml)
+  // });
+  // res.send(replaceDoubleQuotesWithSingleQuotes(xml));
+  let singleQut = replaceDoubleQuotesWithSingleQuotes(xml)
+
+  res.send(replaceWord(singleQut, "root", "fura"))
 });
 // POST route to convert XML to JSON
 
