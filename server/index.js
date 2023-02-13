@@ -40,10 +40,11 @@ app.post("/convert-to-xml", (req, res) => {
   let fdk = finalQut.replace("<root>", "")
   let ddd = fdk.replace("<root/>", "")
   let hgh = ddd.replace(":", "")
+  let f = hgh.replaceAll("\n","")
   // res.send(finalQut)
   res.json({
     status: 1,
-    result: hgh
+    result: f
   });
 });
 // POST route to convert XML to JSON
