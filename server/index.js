@@ -36,8 +36,8 @@ app.post("/convert-to-xml", (req, res) => {
   // });
   // res.send(replaceDoubleQuotesWithSingleQuotes(xml));
   let singleQut = replaceDoubleQuotesWithSingleQuotes(xml)
-
-  res.send(replaceWord(singleQut, "root", "fura"))
+  let finalQut = singleQut.replace("<?xml version='1.0' encoding='UTF-8' standalone='yes'?>", "")
+  res.send(finalQut)
 });
 // POST route to convert XML to JSON
 
