@@ -36,16 +36,13 @@ app.post("/convert-to-xml", (req, res) => {
   // });
   // res.send(replaceDoubleQuotesWithSingleQuotes(xml));
   let singleQut = replaceDoubleQuotesWithSingleQuotes(xml)
-  let finalQut = singleQut.replace("<?xml version='1.0' encoding='UTF-8' standalone='yes'?>", "")
-  let fdk = finalQut.replace("<root>", "")
-  let ddd = fdk.replace("<root/>", "")
-  let hgh = ddd.replace(":", "")
-  let f = hgh.replaceAll("\n","")
-  // res.send(finalQut)
-  res.json({
-    status: 1,
-    result: f
-  });
+  // let finalQut = singleQut.replace("<?xml version='1.0' encoding='UTF-8' standalone='yes'?>", "")
+
+  res.send(singleQut)
+  // res.json({
+  //   status: 1,
+  //   result: singleQut
+  // });
 });
 // POST route to convert XML to JSON
 
