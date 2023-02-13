@@ -15,13 +15,18 @@ app.use(bodyParser.text({ type: 'text/xml' }));
 
 app.use(cors());
 
+function replaceDoubleQuotesWithSingleQuotes(str) {
+  return str.replace(/\"/g, "\'");
+}
+
 // POST route to convert JSON to XML
 app.post("/convert-to-xml", (req, res) => {
   // Convert JSON to XML
   const builder = new xml2js.Builder();
   const xml = builder.buildObject(req.body);
 
-  res.send(xml);
+  
+    res.send(replaceDoubleQuotesWithSingleQuotes(xml));
 });
 // POST route to convert XML to JSON
 
