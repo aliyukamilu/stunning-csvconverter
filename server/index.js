@@ -25,8 +25,11 @@ app.post("/convert-to-xml", (req, res) => {
   const builder = new xml2js.Builder();
   const xml = builder.buildObject(req.body);
 
-  
-    res.send(replaceDoubleQuotesWithSingleQuotes(xml));
+
+  res.json({
+    status: 1,
+    result: replaceDoubleQuotesWithSingleQuotes(xml)
+  });
 });
 // POST route to convert XML to JSON
 
